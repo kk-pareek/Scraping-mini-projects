@@ -1,6 +1,6 @@
 # webscrap
 
-Learning about this repository:
+Let's learn this tiny repo:
 
 *** app.py:
 - is the main program which runs independent of any other local module
