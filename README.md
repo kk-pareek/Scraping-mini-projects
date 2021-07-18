@@ -9,8 +9,10 @@ Let's learn this tiny repo:
 - uses pandas module for framing the extracted data, and storing into a .csv file
 - results in creation of file 'data.csv' on a successful run
 
+![](/images/demo.png)
 
-**other files**:
+
+**Learning steps**:
 - represents the stages one should refer in order to understand app.py as a beginner
 - 1.get_all_links fetches all the href links available on our source web-page
 - 2.get_specific_link fetches the specific links by specifying particular class name, in this case, fetching only the links to the profiles of top 100 actresses
