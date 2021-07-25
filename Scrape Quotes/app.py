@@ -1,7 +1,12 @@
 import bs4
 import requests
+import pandas as pd
 
-url = "http://quotes.toscrape.com/"
+data_dict = {}
+index=1
+
+url = "http://quotes.toscrape.com"
+copy_of_url = url
 
 while True:
     response = requests.get(url)
@@ -12,17 +17,22 @@ while True:
     tags = soup.find_all('div', {"class": "quote"})
 
     for tag in tags:
-        print("=="*50)
-        print(tag.span.text)
-        print("- " + tag.small.text)
+        quote = tag.span.text
+        author = "-" + tag.small.text
+        data_dict[index] = [quote,author]
+        index += 1
 
-    nav = soup.find('nav') 
+    next_page = soup.find('li', {'class': 'next'}) 
 
-    if nav and nav.a['href']:
-        url = url + nav.a['href']
+    if next_page:
+        url = copy_of_url + next_page.a['href']
     
     else:
         break
+
+data_dict_df = pd.DataFrame.from_dict(data_dict, orient='index', columns=['QUOTE','AUTHOR'])
+
+data_dict_df.to_csv("data.csv")
 
 
 
